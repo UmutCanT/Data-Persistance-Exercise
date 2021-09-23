@@ -24,18 +24,6 @@ public class DataManager : MonoBehaviour
         LoadHighScore();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     [System.Serializable]
     class SavedData
     {
@@ -77,5 +65,4 @@ public class DataManager : MonoBehaviour
     {
         return string.Format("Leader: {0} with {1} points", leaderName, score);
     }
-
 }

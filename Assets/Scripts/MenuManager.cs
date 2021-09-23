@@ -22,12 +22,6 @@ public class MenuManager : MonoBehaviour
         TitleManager();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void StartNewGame()
     {
         DataManager.instance.playerName = PlayerNameManager();
