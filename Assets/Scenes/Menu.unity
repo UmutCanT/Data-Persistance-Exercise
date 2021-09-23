@@ -1096,10 +1096,10 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_MaxSize: 100
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 1
@@ -1312,6 +1312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highScoreText: {fileID: 1808361405}
   placeHolderText: {fileID: 684338729}
+  playerNameText: {fileID: 1952957742}
 --- !u!1 &2112071892
 GameObject:
   m_ObjectHideFlags: 0

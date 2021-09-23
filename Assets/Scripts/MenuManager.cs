@@ -36,6 +36,7 @@ public class MenuManager : MonoBehaviour
 
     public void Quit()
     {
+        DataManager.instance.SaveHighScore(DataManager.instance.score,  DataManager.instance.playerName);
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else
@@ -45,22 +46,22 @@ public class MenuManager : MonoBehaviour
 
     void TitleManager()
     {
-        if(DataManager.instance.playerName == null)
+        if(DataManager.instance.leaderName == null)
         {
             highScoreText.text = "First Contender!!!";
         }
         else
         {
-            highScoreText.text = string.Format(titleHS, DataManager.instance.playerName, DataManager.instance.score);
-            placeHolderText.text = DataManager.instance.playerName;
+            highScoreText.text = string.Format(titleHS, DataManager.instance.leaderName, DataManager.instance.score);
+            placeHolderText.text = DataManager.instance.leaderName;
         }
     }
 
     string PlayerNameManager()
     {
-        if(playerNameText == null)
+        if(playerNameText.text == null)
         {
-            return playerNameText.text;
+            return placeHolderText.text;
         }
         else
         {

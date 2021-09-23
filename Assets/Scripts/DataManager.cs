@@ -7,6 +7,7 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
 
+    public string leaderName;
     public string playerName;
     public int score;
 
@@ -26,7 +27,7 @@ public class DataManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -51,27 +52,30 @@ public class DataManager : MonoBehaviour
             data.highScore = score;
         }
         string json = JsonUtility.ToJson(data);
-        File.WriteAllText(Application.persistentDataPath + "playerdata.json", json);
+        File.WriteAllText(Application.persistentDataPath + "/playerdata.json", json);
     }
 
     public void LoadHighScore()
     {
-        string path = Application.persistentDataPath + "playerdata.json";
+        string path = Application.persistentDataPath + "/playerdata.json";
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
             SavedData data = JsonUtility.FromJson<SavedData>(json);
 
-            playerName = data.leaderPlayerName;
+            leaderName = data.leaderPlayerName;
             score = data.highScore;
         }
-
-        playerName = null;
-        score = 0;
+        else
+        {
+            leaderName = null;
+            score = 0;
+        }
     }
 
-    public void CheckHighScore()
+    public string HighScoreToText()
     {
-
+        return string.Format("Leader: {0} with {1} points", leaderName, score);
     }
+
 }

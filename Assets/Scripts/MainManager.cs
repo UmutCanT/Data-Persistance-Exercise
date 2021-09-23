@@ -11,6 +11,7 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
+    [SerializeField] Text highScoreText;
     public GameObject GameOverText;
     
     private bool m_Started = false;
@@ -22,6 +23,7 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        highScoreText.text = DataManager.instance.HighScoreToText();
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         
@@ -72,5 +74,11 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        if(m_Points >= DataManager.instance.score)
+        {
+            DataManager.instance.SaveHighScore(m_Points, DataManager.instance.playerName);
+            DataManager.instance.score = m_Points;
+            DataManager.instance.leaderName = DataManager.instance.playerName;
+        }
     }
 }
